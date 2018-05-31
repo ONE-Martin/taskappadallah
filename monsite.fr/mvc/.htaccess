@@ -1,0 +1,9 @@
+RewriteEngine on
+RewriteRule ^posts/index$ index.php?controller=posts&action=index
+RewriteRule ^posts/new_post$ index.php?controller=posts&action=new_post
+RewriteRule ^posts/val_new_post$ index.php?controller=posts&action=val_new_post
+RewriteRule ^posts/show/([0-9]+)$  index.php?controller=posts&action=show&id=$1
+RewriteRule ^posts/delete/([0-9]+)$  index.php?controller=posts&action=delete&id=$1
+RewriteRule ^posts/update/([0-9]+)$  index.php?controller=posts&action=update&id=$1
+RewriteRule ^posts/val_update/([0-9]+)$  index.php?controller=posts&action=val_update&id=$1
+ 
