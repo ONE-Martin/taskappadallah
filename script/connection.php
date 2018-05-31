@@ -11,7 +11,7 @@
 
       if (!isset(self::$instance)) {
 
-         self::$instance= new PDO("mysql:host=localhost;dbname=taskdb","taskapp","orange",$opt);
+         self::$instance= new PDO("mysql:host=localhost;dbname=taskdb","root","orange",$opt);
       } // end if
       return self::$instance;
     }//end getInstance

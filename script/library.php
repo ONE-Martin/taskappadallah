@@ -46,4 +46,12 @@ class Task
         $query->bindParam("id", $task_id, PDO::PARAM_INT);
         $query->execute();
     }
+
+    public function delete($task_id)
+    {
+      $task_id =intval($task_id);
+      $query = $this->con->prepare("DELETE FROM tasks WHERE id = :id");
+      $query->bindParam("id", $task_id, PDO::PARAM_INT);
+      $query->execute();
+    }
 } //end class
