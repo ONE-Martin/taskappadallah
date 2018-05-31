@@ -7,18 +7,20 @@ class Task
     {
         $this->con=DBConnect::getInstance();
     }
-    public function create($name, $description)
+    public function create($name, $description, $price)
     {
-        $query=$this->con->prepare("insert into tasks(name, description) values(:name,:description)");
+        $query=$this->con->prepare("insert into tasks(name, description, price) values(:name,:description,:price)");
         $query->bindParam("name", $name, PDO::PARAM_STR);
         $query->bindParam("description", $description, PDO::PARAM_STR);
+        $query->bindParam("price", $price, PDO::PARAM_STR);
         $query->execute();
 
         return json_encode(
           ['task'=>[
                                       'id'=>$this->con->lastInsertId(),
                                       'name'=>$name,
-                                      'description'=>$description
+                                      'description'=>$description,
+                                      'price'=>$price
                                    ]
                           ]
                          );

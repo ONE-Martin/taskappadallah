@@ -8,18 +8,18 @@ if (isset($data['task'])) {
 
     $name = (isset($data['task']['name']) ? $data['task']['name'] : NULL);
     $description = (isset($data['task']['description']) ? $data['task']['description'] : NULL);
+    $price = (isset($data['task']['price']) ? $data['task']['price'] : NULL);
 
     // validated the request
     if ($name == NULL) {
         http_response_code(400);
         echo json_encode(['errors' => ["Name  required"]]);
-
     } else {
 
         // Add the task
         $task = new Task();
 
-        echo $task->create($name, $description);
+        echo $task->create($name, $description, $price);
     }
 }
   ?>

@@ -6,6 +6,7 @@ if (isset($data['task'])) {
     $name = (isset($data['task']['name']) ? $data['task']['name'] : null);
     $description = (isset($data['task']['description']) ? $data['task']['description'] : null);
     $task_id = (isset($data['task']['id']) ? $data['task']['id'] : null);
+    $price = (isset($data['task']['price']) ? $data['task']['price'] : null);
 
     if ($name == null) {
         http_response_code(400);
@@ -14,6 +15,6 @@ if (isset($data['task'])) {
 
         // Update the Task
         $task = new Task();
-        $task->Update($name, $description, $task_id);
+        $task->Update($name, $description, $task_id, $price);
     }
 }
