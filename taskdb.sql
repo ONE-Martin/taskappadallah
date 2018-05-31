@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 31 mai 2018 à 08:49
+-- Généré le :  jeu. 31 mai 2018 à 09:19
 -- Version du serveur :  10.2.14-MariaDB
 -- Version de PHP :  5.6.35
 
@@ -25,14 +25,15 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `basket`
+-- Structure de la table `cart`
 --
 
-DROP TABLE IF EXISTS `basket`;
-CREATE TABLE IF NOT EXISTS `basket` (
+DROP TABLE IF EXISTS `cart`;
+CREATE TABLE IF NOT EXISTS `cart` (
   `id` int(11) NOT NULL,
   `name` varchar(64) DEFAULT NULL,
   `quantity` int(11) DEFAULT NULL,
+  `price` float DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -49,12 +50,15 @@ CREATE TABLE IF NOT EXISTS `tasks` (
   `description` varchar(2048) DEFAULT NULL,
   `price` float DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `tasks`
 --
 
+INSERT INTO `tasks` (`id`, `name`, `description`, `price`) VALUES
+(14, 'POMME', 'MIAM', 69);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
