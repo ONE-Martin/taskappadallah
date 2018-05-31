@@ -1,7 +1,6 @@
 <?php
 
 $data = json_decode(file_get_contents('php://input'), true);
-
 if (isset($data['task'])) {
     require __DIR__ . '/library.php';
 
