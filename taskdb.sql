@@ -55,9 +55,6 @@ CREATE TABLE IF NOT EXISTS `tasks` (
 -- Déchargement des données de la table `tasks`
 --
 
-INSERT INTO `tasks` (`id`, `name`, `description`, `price`) VALUES
-(1, 'Apple', 'HMMMMMM MIAM LES POMMES', 69),
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
