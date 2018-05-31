@@ -39,7 +39,7 @@
                         <td>{{ task.name }}</td>
                         <td>{{ task.description }}</td>
                         <td>
-                            <button ng-click="edit($index)"  class="btn btn-primary btn-xs">Edit</button>
+                            <button ng-click="edit($index)" class="btn btn-primary btn-xs">Edit</button>
                             <button ng-click="delete($index)" class="btn btn-danger btn-xs">Delete</button>
                         </td>
                     </tr>
@@ -53,9 +53,9 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Add Task</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Add Task</h4>
                 </div>
                 <div class="modal-body">
 
@@ -89,9 +89,9 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Task Details</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Task Details</h4>
                 </div>
                 <div class="modal-body">
 
@@ -114,6 +114,26 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                     <button type="button" class="btn btn-primary" ng-click="updateTask()">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Task -->
+    <div class="modal fade" id="modal_delete_task" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Task Details</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <h2> Do you really want to delete this task ? </h2>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No, it was a mistake</button>
+                    <button type="button" class="btn btn-primary" ng-click="deleteTask()">Yes, i'm sure</button>
                 </div>
             </div>
         </div>
