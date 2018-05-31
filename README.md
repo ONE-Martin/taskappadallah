@@ -2,7 +2,7 @@
 
 Front end : anfular js (penser objet) (1-2 personne)
 Backend : PHP uniquement
-        1 personne pour la db (script .sql qui permet d'instancier la base, table, utilisateur?)
+        1 personne pour la db (base en .sql)
         1 personne pour les vues nécessaires
         Créer l'objet article...
         1 controleur : la session PHP doit rester ouverte tant qu'on a des articles dans le panier

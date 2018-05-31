@@ -48,6 +48,58 @@
                 </table>
             </div>
         </div>
+    <br>
+
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Articles:</h3>
+                <table ng-if="tasks.length > 0" class="table table-bordered table-responsive table-striped">
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr ng-repeat="task in tasks">
+                        <td>{{ task.name }}</td>
+                        <td>{{ task.description }}</td>
+                        <td>{{ task.price }}</td>
+                        <td>
+                            <button ng-click="add_item(task.name)" class="btn btn-success btn-xs">Add to cart</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    <br>
+
+
+
+
+    <br>
+    <div class="row">
+            <div class="col-md-12">
+                <h3>Panier:</h3>
+                <table ng-if="tasks.length > 0" class="table table-bordered table-responsive table-striped">
+                    <tr>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr ng-repeat="item in cart">
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.price }}</td>
+                        <td>
+                            <button ng-click="delete(item.name)" class="btn btn-danger btn-xs">Delete</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
 
     <!--  Add New Task -->
