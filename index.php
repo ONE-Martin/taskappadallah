@@ -43,7 +43,7 @@
                                 <td>{{ task.name }}</td>
                                 <td>{{ task.description }}</td>
                                 <td>{{ task.price }}</td>
-                                <td>
+                                <td align="center">
                                     <button ng-click="show($index)" class="btn btn-success btn-xs">Show</button>
                                     <button ng-click="edit($index)" class="btn btn-primary btn-xs">Edit</button>
                                     <button ng-click="delete($index)" class="btn btn-danger btn-xs">Delete</button>
@@ -101,7 +101,7 @@
                                 <td>{{ item.name }}</td>
                                 <td>{{ item.quantity }}</td>
                                 <td>{{ item.price }}</td>
-                                <td>
+                                <td align="center">
                                     <button ng-click="delete(item.name)" class="btn btn-danger btn-xs">Delete</button>
                                 </td>
                             </tr>
@@ -209,7 +209,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">No, it was a mistake</button>
-                        <button type="button" class="btn btn-primary" ng-click="deleteTask()">Yes, i'm sure</button>
+                        <button type="button" class="btn btn-primary" ng-click="deleteTask($index)">Yes, i'm sure</button>
                     </div>
                 </div>
             </div>
