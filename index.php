@@ -54,9 +54,6 @@
                 </div>
             </div>
             <br>
-
-
-
             <div class="row">
                 <div class="col-md-12">
                     <h3>Articles:</h3>
@@ -73,7 +70,7 @@
                                 <td>{{ task.description }}</td>
                                 <td>{{ task.price }}</td>
                                 <td>
-                                    <button ng-click="add_item(task.name)" class="btn btn-success btn-xs">Add to cart</button>
+                                    <button ng-click="add_item(task)" class="btn btn-success btn-xs">Add to cart</button>
                                 </td>
                             </tr>
                         </table>
@@ -102,7 +99,7 @@
                                 <td>{{ item.quantity }}</td>
                                 <td>{{ item.price }}</td>
                                 <td align="center">
-                                    <button ng-click="delete(item.name)" class="btn btn-danger btn-xs">Delete</button>
+                                    <button ng-click="delete($index)" class="btn btn-danger btn-xs">Delete</button>
                                 </td>
                             </tr>
                         </table>
