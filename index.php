@@ -10,7 +10,7 @@
 
 <body ng-app="App">
 
-    <div ng-controller="TaskController">
+    <div ng-controller="ArticleController">
 
         <div class="container">
             <div class="row">
@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="pull-right">
-                        <button class="btn btn-success" data-toggle="modal" data-target="#add_new_task_modal">Add Article
+                        <button class="btn btn-success" data-toggle="modal" data-target="#add_new_article_modal">Add Article
                         </button>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                 <div class="col-md-12">
                     <h3>Articles:</h3>
                     <div class='table-responsive'>
-                        <table ng-if="tasks.length > 0" class="table table-bordered table-striped">
+                        <table ng-if="articles.length > 0" class="table table-bordered table-striped">
                             <tr>
                                 <th>No</th>
                                 <th>Name</th>
@@ -38,15 +38,15 @@
                                 <th>Price</th>
                                 <th>Action</th>
                             </tr>
-                            <tr ng-repeat="task in tasks">
+                            <tr ng-repeat="article in articles">
                                 <td>{{ $index + 1 }}</td>
-                                <td>{{ task.name }}</td>
-                                <td>{{ task.description }}</td>
-                                <td>{{ task.price }}</td>
+                                <td>{{ article.name }}</td>
+                                <td>{{ article.description }}</td>
+                                <td>{{ article.price }}</td>
                                 <td align="center">
-                                    <button ng-click="show($index)" class="btn btn-success btn-xs">Show</button>
-                                    <button ng-click="edit($index)" class="btn btn-primary btn-xs">Edit</button>
-                                    <button ng-click="delete($index)" class="btn btn-danger btn-xs">Delete</button>
+                                    <button ng-click="show($index)" class="btn btn-success btn-xs">Détails</button>
+                                    <button ng-click="edit($index)" class="btn btn-primary btn-xs">Editer</button>
+                                    <button ng-click="delete($index)" class="btn btn-danger btn-xs">Supprimer</button>
                                 </td>
                             </tr>
                         </table>
@@ -61,20 +61,22 @@
                 <div class="col-md-12">
                     <h3>Articles:</h3>
                     <div class='table-responsive'>
-                        <table ng-if="tasks.length > 0" class="table table-bordered table-responsive table-striped">
+                        <table ng-if="articles.length > 0" class="table table-borderless table-striped">
                             <tr>
-                                <th>Name</th>
+                                <th>Nom</th>
                                 <th>Description</th>
-                                <th>Price</th>
-                                <th>Action</th>
+                                <th>Prix</th>
+                                <th>Actions</th>
                             </tr>
-                            <tr ng-repeat="task in tasks">
-                                <td>{{ task.name }}</td>
-                                <td>{{ task.description }}</td>
-                                <td>{{ task.price }}</td>
+                            <tr ng-repeat="article in articles">
+                                <td>{{ article.name }}</td>
+                                <td>{{ article.description }}</td>
+                                <td>{{ article.price }}</td>
                                 <td>
-                                    <button ng-click="add_item(task.name)" class="btn btn-success btn-xs">Add to cart</button>
+                                    <button ng-click="show($index)" class="btn btn-primary btn-xs">Détails</button>
+                                    <button ng-click="add_item(article.name)" class="btn btn-success btn-xs">Ajouter au panier</button>
                                 </td>
+                                
                             </tr>
                         </table>
                     </div>
@@ -88,20 +90,21 @@
             <br>
             <div class="row">
                 <div class="col-md-12">
-                    <h3>Panier:</h3>
+                    <h3>Panier :</h3>
                     <div class='table-responsive'>
-                        <table ng-if="tasks.length > 0" class="table table-bordered table-responsive table-striped">
+                        <table ng-if="articles.length > 0" class="table table-bordered table-striped">
                             <tr>
-                                <th>Name</th>
-                                <th>Quantity</th>
-                                <th>Price</th>
-                                <th>Action</th>
+                                <th>Nom</th>
+                                <th>Quantité</th>
+                                <th>Prix</th>
+                                <th>Actions</th>
                             </tr>
                             <tr ng-repeat="item in cart">
                                 <td>{{ item.name }}</td>
                                 <td>{{ item.quantity }}</td>
                                 <td>{{ item.price }}</td>
                                 <td align="center">
+                                    <button ng-click="show($index)" class="btn btn-success btn-xs">Détails</button>
                                     <button ng-click="delete(item.name)" class="btn btn-danger btn-xs">Delete</button>
                                 </td>
                             </tr>
@@ -111,12 +114,12 @@
             </div>
         </div>
 
-        <!--  Add New Task -->
-        <div class="modal fade" id="add_new_task_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <!--  Add New Article -->
+        <div class="modal fade" id="add_new_article_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Add Task</h4>
+                        <h4 class="modal-title" id="myModalLabel">Add Article</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -131,34 +134,34 @@
 
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input ng-model="task.name" type="text" id="name" class="form-control" />
+                            <input ng-model="article.name" type="text" id="name" class="form-control" />
                         </div>
 
                         <div class="form-group">
                             <label for="description">Description</label>
-                            <textarea ng-model="task.description" class="form-control" name="description"></textarea>
+                            <textarea ng-model="article.description" class="form-control" name="description"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="price">Price</label>
-                            <input ng-model="task.price" type="number" class="form-control" id="price">
+                            <input ng-model="article.price" type="number" class="form-control" id="price">
                             </textarea>
                         </div>
 
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary" ng-click="addTask()">Add Article</button>
+                        <button type="button" class="btn btn-primary" ng-click="addArticle()">Add Article</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Update Task -->
-        <div class="modal fade" id="modal_update_task" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <!-- Update Article -->
+        <div class="modal fade" id="modal_update_article" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Task Details</h4>
+                        <h4 class="modal-title" id="myModalLabel">Article Details</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -173,54 +176,54 @@
 
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input ng-model="task_details.name" type="text" id="name" class="form-control" />
+                            <input ng-model="article_details.name" type="text" id="name" class="form-control" />
                         </div>
 
                         <div class="form-group">
                             <label for="description">Description</label>
-                            <textarea ng-model="task_details.description" class="form-control" name="description"></textarea>
+                            <textarea ng-model="article_details.description" class="form-control" name="description"></textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="price">Price</label>
-                            <input ng-model="task_details.price" type="number" id="price" class="form-control" />
+                            <input ng-model="article_details.price" type="number" id="price" class="form-control" />
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary" ng-click="updateTask()">Save Changes</button>
+                        <button type="button" class="btn btn-primary" ng-click="updateArticle()">Save Changes</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Delete Task -->
-        <div class="modal fade" id="modal_delete_task" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <!-- Delete Article -->
+        <div class="modal fade" id="modal_delete_article" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Task Details</h4>
+                        <h4 class="modal-title" id="myModalLabel">Article Details</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <h2> Do you really want to delete this task ? </h2>
+                        <h2> Do you really want to delete this article ? </h2>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">No, it was a mistake</button>
-                        <button type="button" class="btn btn-primary" ng-click="deleteTask($index)">Yes, i'm sure</button>
+                        <button type="button" class="btn btn-primary" ng-click="deleteArticle($index)">Yes, i'm sure</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Show Task -->
-        <div class="modal fade" id="modal_show_task" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <!-- Show Article -->
+        <div class="modal fade" id="modal_show_article" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Task Details</h4>
+                        <h4 class="modal-title" id="myModalLabel">Article Details</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -235,17 +238,17 @@
 
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input ng-model="task_details.name" type="text" id="name" class="form-control" disabled/>
+                            <input ng-model="article_details.name" type="text" id="name" class="form-control" disabled/>
                         </div>
 
                         <div class="form-group">
                             <label for="description">Description</label>
-                            <textarea ng-model="task_details.description" class="form-control" name="description" disabled></textarea>
+                            <textarea ng-model="article_details.description" class="form-control" name="description" disabled></textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="price">Price</label>
-                            <input ng-model="task_details.price" type="number" id="price" class="form-control" disabled/>
+                            <input ng-model="article_details.price" type="number" id="price" class="form-control" disabled/>
                         </div>
                     </div>
                     <div class="modal-footer">

@@ -1,6 +1,6 @@
 <?php
 require __DIR__.'/connection.php';
-class Task
+class Article
 {
     protected $con;
     public function __construct()
@@ -9,14 +9,14 @@ class Task
     }
     public function create($name, $description, $price)
     {
-        $query=$this->con->prepare("insert into tasks(name, description, price) values(:name,:description,:price)");
+        $query=$this->con->prepare("insert into articles(name, description, price) values(:name,:description,:price)");
         $query->bindParam("name", $name, PDO::PARAM_STR);
         $query->bindParam("description", $description, PDO::PARAM_STR);
         $query->bindParam("price", $price, PDO::PARAM_STR);
         $query->execute();
 
         return json_encode(
-          ['task'=>[
+          ['article'=>[
                                       'id'=>$this->con->lastInsertId(),
                                       'name'=>$name,
                                       'description'=>$description,
@@ -28,32 +28,32 @@ class Task
 
     public function read()
     {
-        $query=$this->con->prepare("select * from tasks");
+        $query=$this->con->prepare("select * from articles");
         $query->execute();
         $data=array();
         while ($row=$query->fetch(PDO::FETCH_ASSOC)) {
             $data[]= $row;
         }
-        //print json_encode(['tasks'=>$data]);
+        //print json_encode(['articles'=>$data]);
 
 
-        return json_encode(['tasks'=>$data]);
+        return json_encode(['articles'=>$data]);
     } //end read
 
-    public function Update($name, $description, $task_id)
-    {   $task_id =intval($task_id);
-        $query = $this->con->prepare("UPDATE tasks SET name = :name, description = :description WHERE id = :id");
+    public function Update($name, $description, $article_id)
+    {   $article_id =intval($article_id);
+        $query = $this->con->prepare("UPDATE articles SET name = :name, description = :description WHERE id = :id");
         $query->bindParam("name", $name, PDO::PARAM_STR);
         $query->bindParam("description", $description, PDO::PARAM_STR);
-        $query->bindParam("id", $task_id, PDO::PARAM_INT);
+        $query->bindParam("id", $article_id, PDO::PARAM_INT);
         $query->execute();
     }
 
-    public function delete($task_id)
+    public function delete($article_id)
     {
-      $task_id =intval($task_id);
-      $query = $this->con->prepare("DELETE FROM tasks WHERE id = :id");
-      $query->bindParam("id", $task_id, PDO::PARAM_INT);
+      $article_id =intval($article_id);
+      $query = $this->con->prepare("DELETE FROM articles WHERE id = :id");
+      $query->bindParam("id", $article_id, PDO::PARAM_INT);
       $query->execute();
     }
 } //end class
