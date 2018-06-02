@@ -56,4 +56,10 @@ class Task
       $query->bindParam("id", $task_id, PDO::PARAM_INT);
       $query->execute();
     }
+
+    public function getTotalPrice()
+    {
+      $query = $this->con->prepare(" SELECT SUM(tasks.price) AS totalPrice FROM tasks");
+      $query->execute();
+    }
 } //end class
