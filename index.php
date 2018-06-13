@@ -32,10 +32,10 @@
                     <div class='table-responsive'>
                         <table ng-if="articles.length > 0" class="table table-bordered table-striped">
                             <tr>
-                                <th>No</th>
-                                <th>Name</th>
+                                <th>Id</th>
+                                <th>Nom</th>
                                 <th>Description</th>
-                                <th>Price</th>
+                                <th>Prix</th>
                                 <th>Action</th>
                             </tr>
                             <tr ng-repeat="article in articles">
@@ -93,13 +93,15 @@
                             <tr>
                                 <th>Nom</th>
                                 <th>Quantité</th>
-                                <th>Prix</th>
+                                <th>Prix unitaire</th>
+                                <th>Prix total</th>
                                 <th>Actions</th>
                             </tr>
-                            <tr ng-repeat="item in cart">
+                            <tr ng-repeat="item in cart.tabItems">
                                 <td>{{ item.name }}</td>
-                                <td>{{ item.quantity }}</td>
+                                <td>{{ itemQuantity(item) }}</td>
                                 <td>{{ item.price }}</td>
+                                <td>{{ item.price * itemQuantity(item) }}</td>
                                 <td align="center">
                                     <button ng-click="show($index)" class="btn btn-success btn-xs">Détails</button>
                                     <button ng-click="delete(item.name)" class="btn btn-danger btn-xs">Supprimer</button>
