@@ -54,9 +54,6 @@
                 </div>
             </div>
             <br>
-
-
-
             <div class="row">
                 <div class="col-md-12">
                     <h3>Articles:</h3>
@@ -105,7 +102,7 @@
                                 <td>{{ item.price }}</td>
                                 <td align="center">
                                     <button ng-click="show($index)" class="btn btn-success btn-xs">Détails</button>
-                                    <button ng-click="delete(item.name)" class="btn btn-danger btn-xs">Delete</button>
+                                    <button ng-click="delete(item.name)" class="btn btn-danger btn-xs">Supprimer</button>
                                 </td>
                             </tr>
                         </table>
