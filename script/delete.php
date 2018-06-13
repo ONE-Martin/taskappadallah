@@ -1,18 +1,18 @@
 <?php
 
 $data = json_decode(file_get_contents('php://input'), true);
-if (isset($data['task'])) {
+if (isset($data['article'])) {
     require __DIR__ . '/library.php';
 
-    $task_id = (isset($data['task']['id']) ? $data['task']['id'] : null);
+    $article_id = (isset($data['article']['id']) ? $data['article']['id'] : null);
 
-    if ($task_id == null) {
+    if ($article_id == null) {
         http_response_code(401);
         echo json_encode(['errors' => ["Id  required"]]);
     }else{
-        // Update the Task
-        $task = new Task();
-        $task->delete($task_id);
+        // Update the Article
+        $article = new Article();
+        $article->delete($article_id);
     }
 }
 
