@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 31 mai 2018 à 10:13
+-- Généré le :  mer. 13 juin 2018 à 15:04
 -- Version du serveur :  10.2.14-MariaDB
 -- Version de PHP :  5.6.35
 
@@ -25,47 +25,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `cart`
+-- Structure de la table `articles`
 --
 
-DROP TABLE IF EXISTS `cart`;
-CREATE TABLE IF NOT EXISTS `cart` (
-  `id` int(11) NOT NULL,
-  `name` varchar(64) DEFAULT NULL,
-  `quantity` int(11) DEFAULT NULL,
-  `price` float DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `cart`
---
-
-INSERT INTO `cart` (`id`, `name`, `quantity`, `price`) VALUES
-(1, 'Pomme', 42, 6.9);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `tasks`
---
-
-DROP TABLE IF EXISTS `tasks`;
-CREATE TABLE IF NOT EXISTS `tasks` (
+DROP TABLE IF EXISTS `articles`;
+CREATE TABLE IF NOT EXISTS `articles` (
   `id` int(8) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) DEFAULT NULL,
-  `description` varchar(2048) DEFAULT NULL,
+  `description` varchar(1024) DEFAULT current_timestamp(),
   `price` float DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `tasks`
+-- Déchargement des données de la table `articles`
 --
 
-INSERT INTO `tasks` (`id`, `name`, `description`, `price`) VALUES
-(17, 'Une Pomme', 'c\'est une pomme', 1),
-(18, 'Une Poire', 'c\'est une pomme', 1.5);
+INSERT INTO `articles` (`id`, `name`, `description`, `price`) VALUES
+(1, 'POMME', 'current_timestamp()', 1),
+(2, 'POIRE', 'current_timestamp()', 2);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
