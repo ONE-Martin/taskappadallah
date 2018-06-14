@@ -89,7 +89,7 @@
                 <div class="col-md-12">
                     <h3>Panier :</h3>
                     <div class='table-responsive'>
-                        <table ng-if="articles.length > 0" class="table table-bordered table-striped">
+                        <table ng-if="cart.getNbItems() > 0" class="table table-bordered table-striped">
                             <tr>
                                 <th>Nom</th>
                                 <th>Quantité</th>
@@ -97,15 +97,26 @@
                                 <th>Prix total</th>
                                 <th>Actions</th>
                             </tr>
-                            <tr ng-repeat="item in cart.tabItems">
-                                <td>{{ item.name }}</td>
-                                <td>{{ itemQuantity(item) }}</td>
-                                <td>{{ item.price }}</td>
-                                <td>{{ item.price * itemQuantity(item) }}</td>
+                            <tr ng-repeat="item in cart.tabItems | unique: item.id">
+                                    <td>{{ item.name }}</td>
+                                    <td>{{ cart.itemQuantity(item) }}</td>
+                                    <td>{{ item.price }}</td>
+                                    <td>{{ cart.itemTotalPrice(item) }}</td>
+                                    <td align="center">
+                                        <button ng-click="show($index)" class="btn btn-success btn-xs">Détails</button>
+                                        <button ng-click="delete(item.name)" class="btn btn-danger btn-xs">Supprimer</button>
+                                    </td>
+                                </div>
+                            </tr>
+                            <tr class=>
+                                <td style="visibility:hidden;"></td>
+                                <td style="visibility:hidden;"></td>
+                                <td>Total panier :</td>
+                                <td>{{cart.totalPrice}}</td>
                                 <td align="center">
-                                    <button ng-click="show($index)" class="btn btn-success btn-xs">Détails</button>
-                                    <button ng-click="delete(item.name)" class="btn btn-danger btn-xs">Supprimer</button>
-                                </td>
+                                        <button ng-click="show($index)" class="btn btn-primary btn-xs">Valider la commande</button>
+                                        <button ng-click="delete(item.name)" class="btn btn-danger btn-xs">Vider le panier</button>
+                                    </td>
                             </tr>
                         </table>
                     </div>
