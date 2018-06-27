@@ -4,6 +4,13 @@
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+
+ /*Ca c'est à nous*/
+
+/*C'est fini*/
+
+
+
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -1948,6 +1955,7 @@ pre code {
 }
 
 .table-responsive {
+  vertical-align: middle;
   display: block;
   width: 100%;
   overflow-x: auto;
@@ -4955,7 +4963,7 @@ tbody.collapse.show {
 
 .alert {
   position: relative;
-  padding: 0.75rem 1.25rem;
+  padding: 0.33rem 0.75rem;
   margin-bottom: 1rem;
   border: 1px solid transparent;
   border-radius: 0.25rem;
