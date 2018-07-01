@@ -26,31 +26,46 @@
                         <tr ng-repeat="article in cart.tabArticles |unique : 'id'" align="center">
                             <td>{{ article.name }}</td>
                             <td>
-                                <span class="alert alert-info">{{ cart.articleQuantity(article) }}</span>
-
-                                <button type="button" class="btn btn-danger btn-xs" ng-click="remove_article(article)">
+                                <button type="button" class="btn btn-sm btn-danger" ng-click="remove_article(article)">
                                     <b>-</b>
                                 </button>
-                                <button type="button" class="btn btn-success btn-xs" ng-click="add_article(article)">
+                                <span class="btn btn-sm btn-outline-info ">{{ cart.articleQuantity(article) }}</span>
+                                <button type="button" class="btn btn-success btn-sm" ng-click="add_article(article)">
                                     <b>+</b>
                                 </button>
                             </td>
                             <td>{{ article.price }}</td>
                             <td>{{ cart.articleTotalPrice(article) }}</td>
                             <td>
-                                <button ng-click="show($index)" class="btn btn-success btn-xs">Détails</button>
-                                <button ng-click="remove_all_articles(article)" class="btn btn-danger btn-xs">Supprimer</button>
+                                <button ng-click="show($index)" class="btn btn-success btn-sm">Détails</button>
+                                <button ng-click="remove_all_articles(article)" class="btn btn-outline-danger btn-sm">Supprimer</button>
                             </td>
                 </div>
                 </tr>
-                <tr class=>
+                <tr align="center">
                     <td style="visibility:hidden;"></td>
                     <td style="visibility:hidden;"></td>
                     <td>Total panier :</td>
                     <td>{{cart.totalPrice}}</td>
                     <td align="center">
-                        <a href="#!order" class="btn btn-primary btn-xs">Valider la commande</a>
-                        <button ng-click="empty()" class="btn btn-danger btn-xs">Vider le panier</button>
+                        <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+
+                            <!-- Identify your business so that you can collect the payments. -->
+                            <input type="hidden" name="business" value="applenotifier-sell@gmail.com">
+
+                            <!-- Specify a Buy Now button. -->
+                            <input type="hidden" name="cmd" value="_xclick">
+
+                            <!-- Specify details about the item that buyers will purchase. -->
+                            <input type="hidden" name="item_name" value="Panier LaBonnePoire.com">
+                            <input type="hidden" name="amount" ng-value={{cart.totalPrice}}>
+                            <input type="hidden" name="currency_code" value="EUR">
+
+                            <!-- Display the payment button. -->
+                            <button ng-click="empty()" class=" btn btn-outline-primary btn-lg" name="submit" alt="Payer avec Paypal">Payer avec Paypal</button>
+
+                        </form>
+                        <button ng-click="empty()" class="btn btn-danger btn-sm">Vider le panier</button>
                     </td>
                 </tr>
                 </table>

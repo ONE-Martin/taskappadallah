@@ -21,8 +21,8 @@
             <div ng-view></div>
             <br>
             <a href="#!catalogue" class="btn btn-success btn-xs">Catalogue</a>
-            <a href="#!cart"  class="btn btn-primary btn-xs">Panier</a>
-            <a href="#!article_manager"  class="btn btn-warning btn-xs">Gestionnaire d'articles</a>
+            <a href="#!cart" class="btn btn-primary btn-xs">Panier</a>
+            <a href="#!article_manager" class="btn btn-warning btn-xs">Gestionnaire d'articles</a>
 
         </div>
     </div>

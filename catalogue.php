@@ -27,8 +27,8 @@
                             <td>{{ article.description }}</td>
                             <td>{{ article.price }}</td>
                             <td>
-                                <button ng-click="show($index)" class="btn btn-primary btn-xs">Détails</button>
-                                <button ng-click="add_article(article)" class="btn btn-success btn-xs">Ajouter au panier</button>
+                                <button ng-click="show($index)" class="btn btn-primary btn-sm">Détails</button>
+                                <button ng-click="add_article(article)" class="btn btn-success btn-sm">Ajouter au panier</button>
                             </td>
 
                         </tr>

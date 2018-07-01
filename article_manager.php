@@ -37,8 +37,8 @@
                             <td>{{ article.description }}</td>
                             <td>{{ article.price }}</td>
                             <td align="center">
-                                <button ng-click="edit($index)" class="btn btn-primary btn-xs">Editer</button>
-                                <button ng-click="delete($index)" class="btn btn-danger btn-xs">Supprimer</button>
+                                <button ng-click="edit($index)" class="btn btn-primary btn-sm">Editer</button>
+                                <button ng-click="delete($index)" class="btn btn-danger btn-sm">Supprimer</button>
                             </td>
                         </tr>
                     </table>
